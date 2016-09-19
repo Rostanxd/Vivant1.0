@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - dbBaseConocimiento@127.0.0.1" uuid="aa0f1b20-86f8-4283-b350-a80198628743">
+    <database-info product="MySQL" version="5.5.24-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="dbbaseconocimiento"/>
+      <table id="2" parent="1" name="app"/>
+      <table id="3" parent="1" name="caracteristica"/>
+      <table id="4" parent="1" name="dispositivo"/>
+      <table id="5" parent="1" name="dispositivocrc"/>
+      <column id="6" parent="2" name="appCodigo">
+        <mandatory>1</mandatory>
+        <data-type>char(3)</data-type>
+      </column>
+      <column id="7" parent="2" name="appDescripcion">
+        <mandatory>1</mandatory>
+        <data-type>varchar(15)</data-type>
+      </column>
+      <key id="8" parent="2" name="PRIMARY">
+        <columns>appCodigo</columns>
+        <primary>1</primary>
+      </key>
+      <column id="9" parent="3" name="crcCodigo">
+        <mandatory>1</mandatory>
+        <data-type>char(3)</data-type>
+      </column>
+      <column id="10" parent="3" name="crcDescripcion">
+        <data-type>varchar(15)</data-type>
+      </column>
+      <key id="11" parent="3" name="PRIMARY">
+        <columns>crcCodigo</columns>
+        <primary>1</primary>
+      </key>
+      <column id="12" parent="4" name="dspCodigo">
+        <mandatory>1</mandatory>
+        <data-type>char(10)</data-type>
+      </column>
+      <column id="13" parent="4" name="dspDescripcion">
+        <data-type>varchar(30)</data-type>
+      </column>
+      <column id="14" parent="4" name="dspEstado">
+        <data-type>char(1)</data-type>
+      </column>
+      <key id="15" parent="4" name="PRIMARY">
+        <columns>dspCodigo</columns>
+        <primary>1</primary>
+      </key>
+      <column id="16" parent="5" name="dspCodigo">
+        <mandatory>1</mandatory>
+        <data-type>char(3)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="17" parent="5" name="dspCrcCodigo">
+        <mandatory>1</mandatory>
+        <data-type>char(3)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="18" parent="5" name="dspCrcExiste">
+        <data-type>char(1)</data-type>
+      </column>
+      <index id="19" parent="5" name="dispositivoCrc_caracteristica_crcCodigo_fk">
+        <columns>dspCrcCodigo</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="20" parent="5" name="dispositivoCrc_dspCodigo_dspCrcCodigo_uindex">
+        <columns>dspCodigo
+dspCrcCodigo</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="21" parent="5" name="dispositivoCrc_dspCodigo_dspCrcCodigo_uindex">
+        <columns>dspCodigo
+dspCrcCodigo</columns>
+        <underlying-index>dispositivoCrc_dspCodigo_dspCrcCodigo_uindex</underlying-index>
+      </key>
+      <key id="22" parent="5" name="PRIMARY">
+        <columns>dspCodigo
+dspCrcCodigo</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="23" parent="5" name="dispositivoCrc_caracteristica_crcCodigo_fk">
+        <columns>dspCrcCodigo</columns>
+        <ref-key>~.caracteristica.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+    </database-model>
+  </data-source>
+</component>

@@ -2,6 +2,7 @@ package es.rostan.hibernate.entidades;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,9 +23,13 @@ public class dispositivo implements Serializable{
     @Column(name = "dspEstado")
     private String dspEstado;
 
-//    @OneToMany(mappedBy = "dispositivo")
-//    private List<dispositivoCrc> listaDspCrc;   //  Lista, referencia a la tabla de dispositivosCrc.
+    @OneToMany(mappedBy = "dispositivo", cascade = CascadeType.ALL)
+    public List<dispositivoCrc> listDspCrc = new ArrayList<dispositivoCrc>();
 
+    @OneToMany(mappedBy = "dispositivo", cascade = CascadeType.ALL)
+    public List<dispositivoApp> listDspApp = new ArrayList<dispositivoApp>();
+
+    //  CONSTRUCOTRES
     public dispositivo() {} //  Constructor vacio para hibernate.
 
     public dispositivo(String dspCodigo, String dspDescripcion, String dspEstado) {
@@ -33,6 +38,15 @@ public class dispositivo implements Serializable{
         this.dspEstado = dspEstado;
     }
 
+    public dispositivo(String dspCodigo, String dspDescripcion, String dspEstado, List<dispositivoCrc> listDspCrc, List<dispositivoApp> listDspApp) {
+        this.dspCodigo = dspCodigo;
+        this.dspDescripcion = dspDescripcion;
+        this.dspEstado = dspEstado;
+        this.listDspCrc = listDspCrc;
+        this.listDspApp = listDspApp;
+    }
+
+    //  GETTERS Y SETTERS
     public String getDspCodigo() {
         return dspCodigo;
     }
@@ -57,14 +71,23 @@ public class dispositivo implements Serializable{
         this.dspEstado = dspEstado;
     }
 
-//    public void setListaDspCrc(List<dispositivoCrc> listaDspCrc) {
-//        this.listaDspCrc = listaDspCrc;
-//    }
-//
-//    public List<dispositivoCrc> getListaDspCrc() {
-//        return listaDspCrc;
-//    }
+    public List<dispositivoCrc> getListDspCrc() {
+        return listDspCrc;
+    }
 
+    public void setListDspCrc(List<dispositivoCrc> listDspCrc) {
+        this.listDspCrc = listDspCrc;
+    }
+
+    public void setListDspApp(List<dispositivoApp> listDspApp) {
+        this.listDspApp = listDspApp;
+    }
+
+    public List<dispositivoApp> getListDspApp() {
+        return listDspApp;
+    }
+
+    //  METODOS
     @Override
     public String toString() {
         return "dispositivo{" +
@@ -73,16 +96,5 @@ public class dispositivo implements Serializable{
                 ", dspEstado='" + dspEstado + '\'' +
                 '}';
     }
-
-//    public void addDispositivoCrc(dispositivoCrc dc){
-//        listaDspCrc.add(dc);
-//    }
-
-//    public dispositivo(String dspCodigo, String dspDescripcion, String dspEstado, List<dispositivoCrc> listaDspCrc) {
-//        this.dspCodigo = dspCodigo;
-//        this.dspDescripcion = dspDescripcion;
-//        this.dspEstado = dspEstado;
-//        this.listaDspCrc = listaDspCrc;
-//    }
 
 }

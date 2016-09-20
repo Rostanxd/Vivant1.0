@@ -24,6 +24,7 @@ public class caracteristica implements Serializable{
     @Column(name = "crcDescripcion")
     private String crcDescripcion;
 
+    //  CONSTRUCTORES
     public caracteristica(){}   //  Constructor vacio para hibernate
 
     public caracteristica(String crcCodigo, String crcDescripcion) {
@@ -31,6 +32,7 @@ public class caracteristica implements Serializable{
         this.crcDescripcion = crcDescripcion;
     }
 
+    //  GETTER Y SETTERS
     public String getCrcCodigo() {
         return crcCodigo;
     }
@@ -47,6 +49,7 @@ public class caracteristica implements Serializable{
         this.crcDescripcion = crcDescripcion;
     }
 
+    //  METODOS
     @Override
     public String toString() {
         return "caracteristica{" +

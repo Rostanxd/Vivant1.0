@@ -12,79 +12,114 @@
       <table id="3" parent="1" name="caracteristica"/>
       <table id="4" parent="1" name="dispositivo"/>
       <table id="5" parent="1" name="dispositivocrc"/>
-      <column id="6" parent="2" name="appCodigo">
+      <table id="6" parent="1" name="dispositivoapp"/>
+      <column id="7" parent="2" name="appCodigo">
         <mandatory>1</mandatory>
-        <data-type>char(3)</data-type>
+        <data-type>varchar(255)</data-type>
       </column>
-      <column id="7" parent="2" name="appDescripcion">
-        <mandatory>1</mandatory>
-        <data-type>varchar(15)</data-type>
+      <column id="8" parent="2" name="appDescripcion">
+        <data-type>varchar(255)</data-type>
       </column>
-      <key id="8" parent="2" name="PRIMARY">
+      <key id="9" parent="2" name="PRIMARY">
         <columns>appCodigo</columns>
         <primary>1</primary>
       </key>
-      <column id="9" parent="3" name="crcCodigo">
+      <column id="10" parent="3" name="crcCodigo">
         <mandatory>1</mandatory>
-        <data-type>char(3)</data-type>
+        <data-type>varchar(255)</data-type>
       </column>
-      <column id="10" parent="3" name="crcDescripcion">
-        <data-type>varchar(15)</data-type>
+      <column id="11" parent="3" name="crcDescripcion">
+        <data-type>varchar(255)</data-type>
       </column>
-      <key id="11" parent="3" name="PRIMARY">
+      <key id="12" parent="3" name="PRIMARY">
         <columns>crcCodigo</columns>
         <primary>1</primary>
       </key>
-      <column id="12" parent="4" name="dspCodigo">
+      <column id="13" parent="4" name="dspCodigo">
         <mandatory>1</mandatory>
-        <data-type>char(10)</data-type>
+        <data-type>varchar(255)</data-type>
       </column>
-      <column id="13" parent="4" name="dspDescripcion">
-        <data-type>varchar(30)</data-type>
+      <column id="14" parent="4" name="dspDescripcion">
+        <data-type>varchar(255)</data-type>
       </column>
-      <column id="14" parent="4" name="dspEstado">
-        <data-type>char(1)</data-type>
+      <column id="15" parent="4" name="dspEstado">
+        <data-type>varchar(255)</data-type>
       </column>
-      <key id="15" parent="4" name="PRIMARY">
+      <key id="16" parent="4" name="PRIMARY">
         <columns>dspCodigo</columns>
         <primary>1</primary>
       </key>
-      <column id="16" parent="5" name="dspCodigo">
+      <column id="17" parent="5" name="dspCrcExiste">
+        <data-type>bit(1)</data-type>
+      </column>
+      <column id="18" parent="5" name="dspCodigo">
         <mandatory>1</mandatory>
-        <data-type>char(3)</data-type>
-        <default-expression>&apos;&apos;</default-expression>
+        <data-type>varchar(255)</data-type>
       </column>
-      <column id="17" parent="5" name="dspCrcCodigo">
+      <column id="19" parent="5" name="crcCodigo">
         <mandatory>1</mandatory>
-        <data-type>char(3)</data-type>
-        <default-expression>&apos;&apos;</default-expression>
+        <data-type>varchar(255)</data-type>
       </column>
-      <column id="18" parent="5" name="dspCrcExiste">
-        <data-type>char(1)</data-type>
-      </column>
-      <index id="19" parent="5" name="dispositivoCrc_caracteristica_crcCodigo_fk">
-        <columns>dspCrcCodigo</columns>
-        <desc-columns></desc-columns>
-      </index>
-      <index id="20" parent="5" name="dispositivoCrc_dspCodigo_dspCrcCodigo_uindex">
-        <columns>dspCodigo
-dspCrcCodigo</columns>
+      <index id="20" parent="5" name="UK_p2veonqi1yvyda9ya864e9bnf">
+        <columns>crcCodigo</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="21" parent="5" name="dispositivoCrc_dspCodigo_dspCrcCodigo_uindex">
+      <key id="21" parent="5" name="PRIMARY">
         <columns>dspCodigo
-dspCrcCodigo</columns>
-        <underlying-index>dispositivoCrc_dspCodigo_dspCrcCodigo_uindex</underlying-index>
-      </key>
-      <key id="22" parent="5" name="PRIMARY">
-        <columns>dspCodigo
-dspCrcCodigo</columns>
+crcCodigo</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="23" parent="5" name="dispositivoCrc_caracteristica_crcCodigo_fk">
-        <columns>dspCrcCodigo</columns>
+      <key id="22" parent="5" name="UK_p2veonqi1yvyda9ya864e9bnf">
+        <columns>crcCodigo</columns>
+        <underlying-index>UK_p2veonqi1yvyda9ya864e9bnf</underlying-index>
+      </key>
+      <foreign-key id="23" parent="5" name="FKjolfsyxjunfuf6e7xjny8rd9i">
+        <columns>dspCodigo</columns>
+        <ref-key>~.dispositivo.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="24" parent="5" name="FKodlkg6goaffyu4u4rs4r00sy5">
+        <columns>crcCodigo</columns>
         <ref-key>~.caracteristica.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="25" parent="6" name="dspAppCalificacion">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="26" parent="6" name="dspCodigo">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="27" parent="6" name="appCodigo">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="28" parent="6" name="UK_gcvf3qa3csyhytmmq8la078d3">
+        <columns>appCodigo</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="29" parent="6" name="PRIMARY">
+        <columns>dspCodigo
+appCodigo</columns>
+        <primary>1</primary>
+      </key>
+      <key id="30" parent="6" name="UK_gcvf3qa3csyhytmmq8la078d3">
+        <columns>appCodigo</columns>
+        <underlying-index>UK_gcvf3qa3csyhytmmq8la078d3</underlying-index>
+      </key>
+      <foreign-key id="31" parent="6" name="FK1ll94pojd7b91cehnaya0nk56">
+        <columns>dspCodigo</columns>
+        <ref-key>~.dispositivo.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="32" parent="6" name="FKf4bnpp6ic0m9jkfydncvf8qry">
+        <columns>appCodigo</columns>
+        <ref-key>~.app.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>

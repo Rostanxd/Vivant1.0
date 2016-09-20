@@ -15,7 +15,7 @@ public class testApp {
     public  static void main(String[] args){
 
         EntityManager man = emf.createEntityManager();
-        app a = new app("003", "WhatsApp");
+        app a = new app("001", "FaceBook");
         man.getTransaction().begin();
         man.persist(a);
         man.getTransaction().commit();

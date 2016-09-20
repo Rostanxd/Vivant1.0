@@ -10,37 +10,60 @@ import java.io.Serializable;
 @Entity
 public class dispositivoCrc implements Serializable{
 
-    /*
-    @ManyToOne
-    @JoinColumn(name="dspCodigo")
+    @Id
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "dspCodigo")
     private dispositivo dispositivo;
 
-    @ManyToOne
-    @JoinColumn(name="crcCodigo")
-    private caracteristica caracteristica;
-    */
-
     @Id
+    @OneToOne(cascade = { CascadeType.ALL })
+    @JoinColumn(name = "crcCodigo")
+    private caracteristica crc;
+
     @Column(name = "dspCrcExiste")
     private Boolean dspCrcExiste;
 
+    //  CONSTRUCTORES
     public dispositivoCrc(){}   //  Constructor vacio para hibernate.
 
-    /*
-    public caracteristica getCaracteristica() {
-        return caracteristica;
+    public dispositivoCrc(es.rostan.hibernate.entidades.dispositivo dispositivo, caracteristica crc, Boolean dspCrcExiste) {
+        this.dispositivo = dispositivo;
+        this.crc = crc;
+        this.dspCrcExiste = dspCrcExiste;
     }
 
-    public void setCaracteristica(caracteristica caracteristica) {
-        this.caracteristica = caracteristica;
-    }
-
-    */
+    //  GETTER Y SETTERS
     public Boolean getDspCrcExiste() {
         return dspCrcExiste;
     }
 
     public void setDspCrcExiste(Boolean dspCrcExiste) {
         this.dspCrcExiste = dspCrcExiste;
+    }
+
+    public es.rostan.hibernate.entidades.dispositivo getDispositivo() {
+        return dispositivo;
+    }
+
+    public void setDispositivo(es.rostan.hibernate.entidades.dispositivo dispositivo) {
+        this.dispositivo = dispositivo;
+    }
+
+    public caracteristica getCrc() {
+        return crc;
+    }
+
+    public void setCrc(caracteristica crc) {
+        this.crc = crc;
+    }
+
+    //  METODOS
+    @Override
+    public String toString() {
+        return "dispositivoCrc{" +
+                "dispositivo=" + dispositivo.toString() +
+                ", crc=" + crc.toString() +
+                ", dspCrcExiste=" + String.valueOf(dspCrcExiste) +
+                '}';
     }
 }

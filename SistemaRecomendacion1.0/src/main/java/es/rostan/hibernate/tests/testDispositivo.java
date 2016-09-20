@@ -27,7 +27,7 @@ public class testDispositivo {
 
     }
 
-    @SuppressWarnings("unchecked")
+//    @SuppressWarnings("unchecked")
     public static void imprimirTodo(){
         EntityManager man = emf.createEntityManager();
         List<dispositivo> dsp = (List<dispositivo>) man.createQuery("FROM dispositivo").getResultList();

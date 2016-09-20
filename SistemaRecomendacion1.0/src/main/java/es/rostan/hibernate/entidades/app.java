@@ -21,6 +21,7 @@ public class app implements Serializable{
     @Column(name = "appDescripcion")
     private String appDescripcion;
 
+    //  CONSTRUCTORES
     public app(){}  //  Constructor vacio para hbernate
 
     public app(String appCodigo, String appDescripcion) {
@@ -28,6 +29,7 @@ public class app implements Serializable{
         this.appDescripcion = appDescripcion;
     }
 
+    //  GETTER Y SETTERS
     public String getAppCodigo() {
         return appCodigo;
     }
@@ -44,6 +46,7 @@ public class app implements Serializable{
         this.appDescripcion = appDescripcion;
     }
 
+    //  METODOS
     @Override
     public String toString() {
         return "app{" +

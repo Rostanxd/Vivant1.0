@@ -7,21 +7,21 @@ import java.io.Serializable;
  * Created by HP on 20/09/2016.
  */
 @Entity
+@Table(name = "dispositivoApp")
 public class dispositivoApp implements Serializable{
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "dspCodigo")
     private dispositivo dispositivo;
 
     @Id
-    @OneToOne(cascade = { CascadeType.ALL })
+    @OneToOne()
     @JoinColumn(name = "appCodigo")
     private app app;
 
     @Column(name = "dspAppCalificacion")
     private int dspAppCalificacion;
-
 
     //  CO0NSTRUCTORES
     public dispositivoApp() {}  //  Constructor vacio para hibernate.
@@ -50,12 +50,12 @@ public class dispositivoApp implements Serializable{
         this.app = app;
     }
 
-    public int getCalificacion() {
+    public int getDspAppCalificacion() {
         return dspAppCalificacion;
     }
 
-    public void setCalificacion(int calificacion) {
-        this.dspAppCalificacion = calificacion;
+    public void setDspAppCalificacion(int dspAppCalificacion) {
+        this.dspAppCalificacion = dspAppCalificacion;
     }
 
     //  METODOS

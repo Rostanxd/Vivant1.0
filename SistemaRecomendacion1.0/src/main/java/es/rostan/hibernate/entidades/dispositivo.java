@@ -29,7 +29,7 @@ public class dispositivo implements Serializable{
     @OneToMany(mappedBy = "dispositivo", cascade = CascadeType.ALL)
     public List<dispositivoApp> listDspApp = new ArrayList<dispositivoApp>();
 
-    //  CONSTRUCOTRES
+    //  CONSTRUCTORES
     public dispositivo() {} //  Constructor vacio para hibernate.
 
     public dispositivo(String dspCodigo, String dspDescripcion, String dspEstado) {

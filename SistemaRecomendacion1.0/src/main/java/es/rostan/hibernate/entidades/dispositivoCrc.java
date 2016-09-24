@@ -8,20 +8,22 @@ import java.io.Serializable;
  */
 
 @Entity
+@Table(name = "dispositivoCrc")
 public class dispositivoCrc implements Serializable{
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "dspCodigo")
     private dispositivo dispositivo;
 
     @Id
-    @OneToOne(cascade = { CascadeType.ALL })
+    @OneToOne()
     @JoinColumn(name = "crcCodigo")
     private caracteristica crc;
 
     @Column(name = "dspCrcExiste")
     private Boolean dspCrcExiste;
+
 
     //  CONSTRUCTORES
     public dispositivoCrc(){}   //  Constructor vacio para hibernate.

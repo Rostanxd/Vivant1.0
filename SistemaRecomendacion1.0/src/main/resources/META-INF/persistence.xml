@@ -9,7 +9,7 @@
 
         <!-- REPRESENTAMOS LAS CLASES -->
         <class>es.rostan.hibernate.entidades.app</class>
-        <class>es.rostan.hibernate.entidades.caracteristica</class>
+        <class>es.rostan.hibernate.entidades.crc</class>
         <class>es.rostan.hibernate.entidades.dispositivo</class>
         <class>es.rostan.hibernate.entidades.dispositivoCrc</class>
         <class>es.rostan.hibernate.entidades.dispositivoApp</class>
